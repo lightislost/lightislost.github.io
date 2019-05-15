@@ -8,17 +8,23 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>个人博客搭建 | The blog of lostlight</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前言使用hexo写博客  Run server Run server Run server Run server">
+  <meta name="description" content="浮生偷得半晌，笔摘闲话二三。 ——诺伯德  前言使用hexo搭建博客hexo修改修改主题yilia主题配置">
 <meta property="og:type" content="article">
 <meta property="og:title" content="个人博客搭建">
-<meta property="og:url" content="http://yoursite.com/2019/05/14/hello-world/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/05/14/myblog_build/index.html">
 <meta property="og:site_name" content="The blog of lostlight">
-<meta property="og:description" content="前言使用hexo写博客  Run server Run server Run server Run server">
+<meta property="og:description" content="浮生偷得半晌，笔摘闲话二三。 ——诺伯德  前言使用hexo搭建博客hexo修改修改主题yilia主题配置">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-14T13:21:07.471Z">
+<meta property="og:image" content="http://yoursite.com/2019/05/14/myblog_build/hexo_init.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/14/myblog_build/hexo_init_bug.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/14/myblog_build/hexo_g.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/14/myblog_build/myblog_build//myblog.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/05/14/myblog_build/myblog_build//yilia_theme_module_blank.png">
+<meta property="og:updated_time" content="2019-05-15T03:28:51.607Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="个人博客搭建">
-<meta name="twitter:description" content="前言使用hexo写博客  Run server Run server Run server Run server">
+<meta name="twitter:description" content="浮生偷得半晌，笔摘闲话二三。 ——诺伯德  前言使用hexo搭建博客hexo修改修改主题yilia主题配置">
+<meta name="twitter:image" content="http://yoursite.com/2019/05/14/myblog_build/hexo_init.png">
   
   
     <link rel="icon" href="/favicon.png">
@@ -156,7 +162,7 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-hello-world" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-myblog_build" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -168,7 +174,7 @@
   
 
         
-        <a href="/2019/05/14/hello-world/" class="archive-article-date">
+        <a href="/2019/05/14/myblog_build/" class="archive-article-date">
   	<time datetime="2019-05-14T08:39:50.666Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-14</time>
 </a>
         
@@ -176,31 +182,47 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><a href="#前言">前言</a><br><br><a href="#使用hexo写博客">使用hexo写博客</a></p>
-<ul>
-<li><a href="#Run server">Run server</a></li>
-<li><a href="#Run server">Run server</a></li>
-<li><a href="#Run server">Run server</a></li>
-<li><a href="#Run server">Run server</a></li>
-</ul>
-<a id="more"></a>
+        <p>浮生偷得半晌，笔摘闲话二三。<br></p>
+<p align="right">——诺伯德</p>
+
+<p><a href="#前言">前言</a><br><br><a href="#使用hexo搭建博客">使用hexo搭建博客</a><br><br><a href="#hexo修改主题">hexo修改修改主题</a><br><br><a href="#yilia主题配置">yilia主题配置</a><br><br><a id="more"></a></p>
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><h6 id="在开始一切之前，你必须已经："><a href="#在开始一切之前，你必须已经：" class="headerlink" title="在开始一切之前，你必须已经："></a>在开始一切之前，你必须已经：<br></h6><p>拥有一个github账号，没有的话去注册一个；<br><br>安装了node.js、npm，并了解相关基础知识；<br><br>安装了git for windows（或者其它git客户端）。<br></p>
 <h6 id="本文所使用的环境："><a href="#本文所使用的环境：" class="headerlink" title="本文所使用的环境："></a>本文所使用的环境：<br></h6><p>Windows@10<br><br><a href="mailto:node.js@10.15.3" target="_blank" rel="noopener">node.js@10.15.3</a><br><br><a href="mailto:git@2.19.1" target="_blank" rel="noopener">git@2.19.1</a><br><br><a href="mailto:hexo-cli@1.1.1" target="_blank" rel="noopener">hexo-cli@1.1.1</a><br><br><a href="mailto:npm@6.4.1" target="_blank" rel="noopener">npm@6.4.1</a><br></p>
-<h6 id="本文参考内容"><a href="#本文参考内容" class="headerlink" title="本文参考内容:"></a>本文参考内容:<br></h6><p>工于利其事，必先利其器。<br><br>本文内容主要参考了小茗同学的<a href="http://blog.liuxianan.com/build-blog-website-by-hexo-github.html" target="_blank" rel="noopener">博客搭建教程</a>和Litten的<a href="https://github.com/litten/hexo-theme-yilia" target="_blank" rel="noopener">Yilia模板</a>以及AomanHao对<a href="https://blog.csdn.net/Aoman_Hao" target="_blank" rel="noopener">Yilia部分问题</a>的解答。<br></p>
-<h2 id="使用hexo写博客"><a href="#使用hexo写博客" class="headerlink" title="使用hexo写博客"></a>使用hexo写博客<br></h2><h3 id="hexo简介"><a href="#hexo简介" class="headerlink" title="hexo简介"></a>hexo简介</h3><p><a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>是一个简单、快速、强大的基于 Github Pages 的博客发布工具，支持Markdown格式，有众多优秀插件和主题，查看<a href="https://hexo.io/docs/" target="_blank" rel="noopener">文档</a> 了解更多关于hexo的信息。<br><br>If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>由于github pages存放的都是静态文件，博客存放的不只是文章内容，还有文章列表、分类、标签、翻页等动态内容，假如每次写完一篇文章都要手动更新博文目录和相关链接信息，相信谁都会疯掉，所以hexo所做的就是将这些md文件都放在本地，每次写完文章后调用写好的命令来批量完成相关页面的生成，然后再将有改动的页面提交到github。</p>
-<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><p>1.很多命令既可以用Windows的cmd来完成，也可以使用git bash来完成，但是部分命令会有一些问题，为避免不必要的问题，建议全部使用git bash来执行；<br><br>2.hexo不同版本差别比较大，网上很多文章的配置信息都是基于2.x的，所以注意不要被误导；<br><br>3.hexo有2种_config.yml文件，一个是根目录下的全局的_config.yml，一个是各个theme下的；<br></p>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo</span><br></pre></td></tr></table></figure>
-<h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><p>创建一个文件夹作为你存放代码的地方，例如G：\xx\myblog\<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> /f/Workspaces/hexo/</span><br><span class="line">$ hexo init</span><br></pre></td></tr></table></figure></p>
+<h6 id="本文参考内容"><a href="#本文参考内容" class="headerlink" title="本文参考内容:"></a>本文参考内容:<br></h6><p>古人言：工于利其事，必先利其器。<br><br>因此本文主要参考了小茗同学的<a href="http://blog.liuxianan.com/build-blog-website-by-hexo-github.html" target="_blank" rel="noopener">博客搭建教程</a>和Litten的<a href="https://github.com/litten/hexo-theme-yilia" target="_blank" rel="noopener">Yilia模板</a>以及AomanHao对<a href="https://blog.csdn.net/Aoman_Hao" target="_blank" rel="noopener">Yilia部分问题</a>的解答。<br></p>
+<h2 id="使用hexo搭建博客"><a href="#使用hexo搭建博客" class="headerlink" title="使用hexo搭建博客"></a>使用hexo搭建博客<br></h2><h3 id="hexo简介"><a href="#hexo简介" class="headerlink" title="hexo简介"></a>hexo简介</h3><p><a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>是一个简单、快速、强大的基于 Github Pages 的博客发布工具，支持Markdown格式，有众多优秀插件和主题，查看<a href="https://hexo.io/docs/" target="_blank" rel="noopener">文档</a> 了解更多关于hexo的信息。<br><br>官方：If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h3 id="hexo注意事项"><a href="#hexo注意事项" class="headerlink" title="hexo注意事项"></a>hexo注意事项</h3><p>1.很多命令既可以用Windows的cmd来完成，也可以使用git bash来完成，但是部分命令会有一些问题，为避免不必要的问题，建议全部使用git bash来执行；<br><br>2.hexo不同版本差别比较大，网上很多文章的配置信息都是基于2.x的，所以注意不要被误导；<br><br>3.hexo有2种_config.yml文件，一个是根目录下的全局的_config.yml，一个是各个theme下的；<br></p>
+<h3 id="hexo安装"><a href="#hexo安装" class="headerlink" title="hexo安装"></a>hexo安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo</span><br></pre></td></tr></table></figure>
+<h3 id="hexo初始化"><a href="#hexo初始化" class="headerlink" title="hexo初始化"></a>hexo初始化</h3><p>创建一个文件夹作为你存放代码的地方，例如G：\xx\myblog\。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init</span><br></pre></td></tr></table></figure></p>
 <p>hexo会自动下载一些文件到这个目录，包括node_modules，目录结构如下图：</p>
-<p>若出现报错信息：<br>根据提示，继续执行<code>npm install</code>。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g(generate) <span class="comment"># 在public目录下生成html及相关文件</span></span><br><span class="line">$ hexo s(server) <span class="comment"># 启动服务</span></span><br></pre></td></tr></table></figure></p>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+<p><img src="/2019/05/14/myblog_build/hexo_init.png" alt="hexo_init"><br></p>
+<p>若出现报错信息，如：<br></p>
+<p><img src="/2019/05/14/myblog_build/hexo_init_bug.png" alt="hexo_init_bug"><br></p>
+<p>根据提示，继续执行<code>npm install</code>。<br></p>
+<p>随后，分别执行<code>hexo g</code>与<code>hexo s</code>，两者分别生成html及相关文件，和开启<a href="http://localhost:4000" target="_blank" rel="noopener">本地预览</a>服务(很多人会碰到浏览器一直在转圈但是就是加载不出来的问题，一般情况下是因为端口占用的缘故，因为4000这个端口太常见了，解决端口冲突问题请参考<a href="http://blog.liuxianan.com/windows-port-bind.html" target="_blank" rel="noopener">这篇文章</a>。)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g(generate) <span class="comment"># 在public目录下生成html及相关文件</span></span><br><span class="line">$ hexo s(server) <span class="comment"># 启动服务</span></span><br></pre></td></tr></table></figure>
+<p>执行以上命令之后，hexo就会在public文件夹生成相关html文件，如下图，这些文件将来都是要提交到github去的:<br></p>
+<p><img src="/2019/05/14/myblog_build/hexo_g.png" alt="hexo_g"><br></p>
+<h2 id="hexo修改主题"><a href="#hexo修改主题" class="headerlink" title="hexo修改主题"></a>hexo修改主题</h2><h3 id="主题下载与更换"><a href="#主题下载与更换" class="headerlink" title="主题下载与更换"></a>主题下载与更换</h3><p>在笔者的<a href="https://lightislost.github.io" target="_blank" rel="noopener">个人博客</a>中采用了hexo-theme-yilia的主题。<br></p>
+<p>首先下载这个主题：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/litten/hexo-theme-yilia.git themes/yilia</span><br></pre></td></tr></table></figure>
+<p>修改<code>/xx/myblog/_config.yml</code>中的<code>theme: landscape</code>改为<code>theme: yilia</code>，然后重新执行<code>hexo g</code>来重新生成。</p>
+<p>如果出现一些莫名其妙的问题，可以先执行<code>hexo clean</code>来清理一下public的内容，然后再来重新生成和发布。</p>
+<h3 id="配置-config-yml文件"><a href="#配置-config-yml文件" class="headerlink" title="配置_config.yml文件"></a>配置_config.yml文件</h3><p>编辑_config.yml文件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vi _config.yml</span><br></pre></td></tr></table></figure></p>
+<p>添加以下内容<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  <span class="built_in">type</span>: git</span><br><span class="line">  repo: git@github.com:账号名/账号名.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure></p>
+<p>检查你的远程仓库地址<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git remote -v <span class="comment">#仓库你的远程仓库地址</span></span><br><span class="line"></span><br><span class="line">$ git remote <span class="built_in">set</span>-url origin 你的仓库地址 <span class="comment">#修改你的远程仓库地址</span></span><br></pre></td></tr></table></figure></p>
+<p>随后执行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ hexo d</span><br><span class="line"></span><br><span class="line">若遇见如下报错信息时：Deployer not found: github 或者 Deployer not found: git</span><br><span class="line">执行如下命令：</span><br><span class="line"></span><br><span class="line">$ npm install hexo-deployer-git --save</span><br><span class="line"></span><br><span class="line">再次执行</span><br><span class="line"></span><br><span class="line">$ hexo d</span><br></pre></td></tr></table></figure></p>
+<p>相关blog文件会自动上传到你的仓库中。</p>
+<h2 id="yilia主题配置"><a href="#yilia主题配置" class="headerlink" title="yilia主题配置"></a>yilia主题配置</h2><p>基本配置<br><img src="myblog_build//myblog.jpg" alt="hexo_theme"><br></p>
+<p>themes/yilia/_config.yml.SubNav 设置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">subnav:</span><br><span class="line">  github: <span class="string">"https://github.com/lightislost"</span></span><br><span class="line">  zhihu: <span class="string">"https://www.zhihu.com/people/lightislost"</span></span><br><span class="line">  bilibili: <span class="string">"https://space.bilibili.com/7847525"</span></span><br><span class="line">  <span class="comment">#weibo: "#"</span></span><br><span class="line">  rss: /atom.xml</span><br></pre></td></tr></table></figure>
+<p>themes/yilia/_config.yml.smart_menu 设置<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">smart_menu:</span><br><span class="line">  innerArchive: <span class="string">'所有文章'</span></span><br><span class="line">  friends: <span class="string">'友链'</span></span><br><span class="line">  aboutme: <span class="string">'关于我'</span></span><br></pre></td></tr></table></figure></p>
+<p>themes/yilia/_config.yml.avatar 头像设置<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">avatar: themes/xx/img/black_man.jpg</span><br></pre></td></tr></table></figure></p>
+<p>_config.yml.avatar 基本设置<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Site</span></span><br><span class="line">title: The blog of lostlight</span><br><span class="line">subtitle: 三流的哲学家</span><br><span class="line">description:</span><br><span class="line">keywords:</span><br><span class="line">author: 诺伯德</span><br><span class="line">language:</span><br><span class="line">timezone:</span><br><span class="line">email:</span><br></pre></td></tr></table></figure></p>
+<h3 id="图片显示bug"><a href="#图片显示bug" class="headerlink" title="图片显示bug"></a>图片显示bug</h3><p>首先确认_config.yml中已经设post_asset_folder为true<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Writing</span></span><br><span class="line">···</span><br><span class="line">post_asset_folder: <span class="literal">true</span></span><br><span class="line">···</span><br></pre></td></tr></table></figure></p>
+<p>其次安装插件<code>hexo-asset-image</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-asset-image --save</span><br></pre></td></tr></table></figure></p>
+<h3 id="文章目录-缺失模块"><a href="#文章目录-缺失模块" class="headerlink" title="文章目录_缺失模块"></a>文章目录_缺失模块</h3><p>若出现以下问题，如图：<br><br><img src="myblog_build//yilia_theme_module_blank.png" alt="yilia_blank"><br><br>根据提示，首先查看node版本，以防万一也检查下npm版本。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ npm -v     <span class="comment">#6.4.1</span></span><br><span class="line">$ node -v    <span class="comment">#v10.15.3&gt;v6.2即可</span></span><br><span class="line"></span><br><span class="line">在/myblog/目录下，运行</span><br><span class="line">$ npm i  hexo-generator-json-content --save</span><br></pre></td></tr></table></figure></p>
+<p>复制以下内容到/myblog/_config.yml中<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">jsonContent:</span><br><span class="line">  meta: <span class="literal">false</span></span><br><span class="line">  pages: <span class="literal">false</span></span><br><span class="line">  posts:</span><br><span class="line">    title: <span class="literal">true</span></span><br><span class="line">    date: <span class="literal">true</span></span><br><span class="line">    path: <span class="literal">true</span></span><br><span class="line">    text: <span class="literal">false</span></span><br><span class="line">    raw: <span class="literal">false</span></span><br><span class="line">    content: <span class="literal">false</span></span><br><span class="line">    slug: <span class="literal">false</span></span><br><span class="line">    updated: <span class="literal">false</span></span><br><span class="line">    comments: <span class="literal">false</span></span><br><span class="line">    link: <span class="literal">false</span></span><br><span class="line">    permalink: <span class="literal">false</span></span><br><span class="line">    excerpt: <span class="literal">false</span></span><br><span class="line">    categories: <span class="literal">false</span></span><br><span class="line">    tags: <span class="literal">true</span></span><br></pre></td></tr></table></figure></p>
+<p>重新执行<code>hexo g</code>和<code>hexo d</code>即可。</p>
 
       
 
@@ -280,7 +302,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/05/14/hello-world/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/05/14/myblog_build/" alt="微信分享二维码">
     </div>
 </div>
 
