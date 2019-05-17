@@ -6,15 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2019 | The blog of lostlight</title>
+  <title>lgb_xgb_paras | The blog of lostlight</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="The blog of lostlight">
-<meta property="og:url" content="http://yoursite.com/archives/2019/index.html">
+  <meta name="description" content="浮生偷得半晌，笔摘闲话二三。 ——诺伯德XgboostLightgbm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="lgb_xgb_paras">
+<meta property="og:url" content="http://yoursite.com/2019/05/17/lgb-xgb-paras/index.html">
 <meta property="og:site_name" content="The blog of lostlight">
+<meta property="og:description" content="浮生偷得半晌，笔摘闲话二三。 ——诺伯德XgboostLightgbm">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-05-17T13:06:07.616Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="The blog of lostlight">
+<meta name="twitter:title" content="lgb_xgb_paras">
+<meta name="twitter:description" content="浮生偷得半晌，笔摘闲话二三。 ——诺伯德XgboostLightgbm">
   
   
     <link rel="icon" href="/favicon.png">
@@ -152,76 +156,174 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-lgb-xgb-paras" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      lgb_xgb_paras
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/05/17/lgb-xgb-paras/" class="archive-article-date">
+
+        
+        <a href="/2019/05/17/lgb-xgb-paras/" class="archive-article-date">
   	<time datetime="2019-05-17T07:41:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-17</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/17/lgb-xgb-paras/">lgb_xgb_paras</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>浮生偷得半晌，笔摘闲话二三。<br></p>
+<p></p><p align="right">——诺伯德</p><br><a href="#Xgboost">Xgboost</a><br><br><a href="#Lightgbm">Lightgbm</a><br><p></p>
+<a id="more"></a>
+<h2 id="Xgboost"><a href="#Xgboost" class="headerlink" title="Xgboost"></a>Xgboost</h2><p>加载数据,data（训练数据），label(目标值)，nthread（-1表示并行加载），missing（填充缺失值，否则为np.nan），weight（预排序时每次分组的权重？）。更多具体内容参考<a href="https://xgboost.readthedocs.io/en/latest/python/python_intro.html" target="_blank" rel="noopener">官网</a>。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import xgboost as xgb</span><br><span class="line">data = pandas.DataFrame(np.arange(12).reshape((4,3)), columns=[<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>])</span><br><span class="line">label = pandas.DataFrame(np.random.randint(2, size=4))</span><br><span class="line">trn_data = xgb.DMatrix(data, label=target, nthread=-1, missing=None, weight=None, feature_names=None)</span><br></pre></td></tr></table></figure></p>
+<p><br></p>
+<p>当未跑满num_bosst_round时，模型分为bst.best_score, bst.best_iteration and bst.best_ntree_limit三种情况。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import xgboost as xgb</span><br><span class="line">param = &#123;<span class="string">'max_depth'</span>: 2, <span class="string">'eta'</span>: 1, <span class="string">'silent'</span>: 1, <span class="string">'objective'</span>: <span class="string">'binary:logistic'</span>&#125;</span><br><span class="line"><span class="comment">#设置多个验证函数</span></span><br><span class="line">param[<span class="string">'eval_metric'</span>] = [<span class="string">'auc'</span>, <span class="string">'ams@0'</span>]</span><br><span class="line"><span class="comment">#设置验证集</span></span><br><span class="line">evallist = [(dtest, <span class="string">'eval'</span>), (dtrain, <span class="string">'train'</span>)]</span><br><span class="line"><span class="comment">#训练</span></span><br><span class="line">bst = xgb.train(params=param, dtrain=trn_data, num_boost_round=1000, evals=evallist, early_stopping_rounds=200, verbose_eval=False)</span><br></pre></td></tr></table></figure></p>
+<p><br></p>
+<p>当可以选取三种不同标准的模型来进行预测。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">data = np.random.rand(7, 10)</span><br><span class="line">dtest = xgb.DMatrix(data)</span><br><span class="line">ypred = bst.predict(dtest, ntree_limit=bst.best_ntree_limit)</span><br></pre></td></tr></table></figure></p>
+<p><br></p>
+<p><code>xgb.Booster</code>用于加载模型并进行后续的预测和模型评估。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">xgb.train(</span><br><span class="line">              params,</span><br><span class="line">              dtrain,</span><br><span class="line">              num_boost_round=10,</span><br><span class="line">              evals=(),</span><br><span class="line">              obj=None,             <span class="comment">#如果是回归问题 ,则为reg:linear , reg:logistic , count:poisson</span></span><br><span class="line">                                    <span class="comment">#如果是分类问题，则为binary:logistic ,rank:pairwise</span></span><br><span class="line">                                    <span class="comment">#可自定义</span></span><br><span class="line">              feval=None,           <span class="comment">#rmse, mae, logloss, error, merror , mlogloss, logloss,auc ,自定义同上</span></span><br><span class="line">              maximize=False,</span><br><span class="line">              early_stopping_rounds=1000,</span><br><span class="line">              evals_result=None,</span><br><span class="line">              verbose_eval=True,    <span class="comment">#是否打印训练信息</span></span><br><span class="line">              xgb_model=None,       <span class="comment">#导入训练模型</span></span><br><span class="line">              callbacks=None,       <span class="comment">#回调函数列表，每轮迭代结束后，都会调用该函数，比如重新设置学习率(参加回调函数实例)</span></span><br><span class="line">              learning_rates=None,  <span class="comment">#似乎是对eta修正的学习率</span></span><br><span class="line">              )</span><br><span class="line">xgb.cv(···,nfold=3)</span><br></pre></td></tr></table></figure></p>
+<p><br></p>
+<p>下面将结合xgb原理介绍xgb中的参数情况。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">params = &#123;</span><br><span class="line">  max_depth: int,                 <span class="comment">#每一个回归树的最大深度</span></span><br><span class="line">  eta: <span class="built_in">float</span>, – Boosting learning rate</span><br><span class="line">  n_estimators: int, – Number of trees to fit.</span><br><span class="line">  verbosity: int,                <span class="comment">#控制日志输出的间隔</span></span><br><span class="line">  objective: string or callable, <span class="comment">#损失函数，如:reg:squarederror, reg:logistic, binary:logistic等以及自定义一阶和二阶可导函数</span></span><br><span class="line">  booster: string,               <span class="comment">#如gbtree(二分类树), gblinear(线性模型) or dart;</span></span><br><span class="line">  eval_metric：                  <span class="comment">#例如:rmse, mae, logloss等以及自定义的评估函数</span></span><br><span class="line">  nthread: int,                  <span class="comment">#使用核数</span></span><br><span class="line">  gamma: <span class="built_in">float</span>, – Minimum loss reduction required to make a further partition on a leaf node of the tree.</span><br><span class="line">  min_child_weight: int,         <span class="comment">#每一个叶节点拥有的最小个数，防止过拟合。</span></span><br><span class="line">  max_delta_step: int, – Maximum delta step we allow each tree’s weight estimation to be.</span><br><span class="line">  subsample: <span class="built_in">float</span>,              <span class="comment">#对于每棵树而言，样本是随机采样的。若小于1，需设置seed保证重复性。</span></span><br><span class="line">  colsample_bytree: <span class="built_in">float</span>,       <span class="comment">#每棵树的特征数是随机采样的。同上</span></span><br><span class="line">  colsample_bylevel: <span class="built_in">float</span>,      <span class="comment">#对于同一树深度的叶节点特征数是随机采样的。同上。</span></span><br><span class="line">  colsample_bynode: <span class="built_in">float</span>,       <span class="comment">#对于一个叶节点的左右特征数是随机采样的。同上。</span></span><br><span class="line">  reg_alpha: <span class="built_in">float</span>,              <span class="comment">#L1正则化权重</span></span><br><span class="line">  reg_lambda: <span class="built_in">float</span>,             <span class="comment">#L2正则化权重</span></span><br><span class="line">  base_score: <span class="built_in">float</span>,             <span class="comment">#初始权重还是初始预测值？</span></span><br><span class="line">  seed: int,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><br></p>
+<h2 id="Lightgbm"><a href="#Lightgbm" class="headerlink" title="Lightgbm"></a>Lightgbm</h2><p>部分内容同上。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">lightgbm.Dataset(</span><br><span class="line">        data,</span><br><span class="line">        label=None,</span><br><span class="line">        reference=None,               <span class="comment">#当该数据作为验证集时，需设置reference=Dtrain</span></span><br><span class="line">        weight=None,                  <span class="comment">#To be continued</span></span><br><span class="line">        group=None,                   <span class="comment">#To be continued</span></span><br><span class="line">        init_score=None,             <span class="comment">#初始权重还是初始预测值？</span></span><br><span class="line">        silent=False,                <span class="comment">#是否输出日志信息。</span></span><br><span class="line">        feature_name=<span class="string">'auto'</span>,         <span class="comment">#指定哪些特征</span></span><br><span class="line">        categorical_feature=<span class="string">'auto'</span>,  <span class="comment">#指定类别特征</span></span><br><span class="line">        params=None,                 <span class="comment">#训练参数</span></span><br><span class="line">        free_raw_data=True,          <span class="comment">#只能使用一次数据？</span></span><br><span class="line">        )</span><br></pre></td></tr></table></figure></p>
+<p><br></p>
+<p><code>lgb.Booster</code>同xgb，用于加载模型并进行后续的预测和模型评估。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">lightgbm.train(</span><br><span class="line">            params,</span><br><span class="line">            train_set,</span><br><span class="line">            num_boost_round=100,</span><br><span class="line">            valid_sets=None,</span><br><span class="line">            valid_names=None,</span><br><span class="line">            fobj=None,</span><br><span class="line">            feval=None,</span><br><span class="line">            init_model=None,</span><br><span class="line">            feature_name=<span class="string">'auto'</span>,</span><br><span class="line">            categorical_feature=<span class="string">'auto'</span>,</span><br><span class="line">            early_stopping_rounds=None,</span><br><span class="line">            evals_result=None,</span><br><span class="line">            verbose_eval=True,</span><br><span class="line">            learning_rates=None,</span><br><span class="line">            keep_training_booster=False,</span><br><span class="line">            callbacks=None</span><br><span class="line">            )</span><br><span class="line"><span class="comment">#执行交叉验证</span></span><br><span class="line">lgb.cv(</span><br><span class="line">      ···,</span><br><span class="line">      folds, <span class="comment">#生成器，节省内层</span></span><br><span class="line">      nfold=5, <span class="comment">#5折</span></span><br><span class="line">      stratified=bool, <span class="comment">#是否分层取样</span></span><br><span class="line">      ···</span><br><span class="line">      )</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<p>下面将结合lgb原理介绍xgb中的参数情况。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">params = &#123;</span><br><span class="line">  boosting_type: string,          <span class="comment">#模式：'gbdt' , 'dart', 'goss', 'rf'</span></span><br><span class="line">  num_leaves: int,               <span class="comment">#叶节点最大数目</span></span><br><span class="line">  max_depth: int,                <span class="comment">#每一个回归树的最大深度</span></span><br><span class="line">  learning_rate: <span class="built_in">float</span>,          <span class="comment">#Boosting learning rate</span></span><br><span class="line">  n_estimators: int,             <span class="comment">#回归树的数目</span></span><br><span class="line">  subsample_for_bin: int,        <span class="comment">#分组的最大数目</span></span><br><span class="line">  verbosity: int,                <span class="comment">#控制日志输出的间隔</span></span><br><span class="line">  objective: string,             <span class="comment">#损失函数，如:regression, binar等</span></span><br><span class="line">  class_weight: None or dict ,  <span class="comment">#多分类任务</span></span><br><span class="line">  min_split_gain: ,             <span class="comment">#Minimum loss reduction required to make a further partition on a leaf node of the tree.</span></span><br><span class="line">  min_child_weight: <span class="built_in">float</span>,     <span class="comment">#– Minimum sum of instance weight (hessian) needed in a child (leaf).</span></span><br><span class="line">  min_child_samples: int,      <span class="comment">#每一个叶节点拥有的最小个数，防止过拟合。</span></span><br><span class="line">  booster: string,             <span class="comment">#如gbtree(二分类树), gblinear(线性模型) or dart;</span></span><br><span class="line">  eval_metric：                <span class="comment">#例如:rmse, mae, logloss等以及自定义的评估函数</span></span><br><span class="line">  n_jobs: int,                <span class="comment">#使用核数</span></span><br><span class="line">  subsample: <span class="built_in">float</span>,           <span class="comment">#对于每棵树而言，样本是随机采样的。若小于1，需设置seed保证重复性。</span></span><br><span class="line">  colsample_bytree: <span class="built_in">float</span>,     <span class="comment">#每棵树的特征数是随机采样的。同上</span></span><br><span class="line">  reg_alpha: <span class="built_in">float</span>,           <span class="comment">#L1正则化权重</span></span><br><span class="line">  reg_lambda: <span class="built_in">float</span>,          <span class="comment">#L2正则化权重</span></span><br><span class="line">  base_score: <span class="built_in">float</span>,           <span class="comment">#初始权重还是初始预测值？</span></span><br><span class="line">  seed: int,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/05/17/lgb-xgb-paras/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/05/14/myblog_build/" class="archive-article-date">
-  	<time datetime="2019-05-14T08:39:50.666Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-14</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/05/14/myblog_build/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">个人博客搭建</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/14/myblog_build/">个人博客搭建</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -244,8 +346,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
