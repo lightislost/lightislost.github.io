@@ -8,22 +8,23 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>个人博客搭建 | The blog of lostlight</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="浮生偷得半晌，笔摘闲话二三。 ——诺伯德  前言使用hexo搭建博客hexo修改修改主题yilia主题配置Bug处理">
+  <meta name="description" content="浮生偷得半晌，笔摘闲话二三。 ——诺伯德  目录 前言 使用hexo搭建博客 hexo修改修改主题 yilia主题配置 Bug处理">
+<meta name="keywords" content="入门教程">
 <meta property="og:type" content="article">
 <meta property="og:title" content="个人博客搭建">
 <meta property="og:url" content="http://yoursite.com/2019/05/14/myblog_build/index.html">
 <meta property="og:site_name" content="The blog of lostlight">
-<meta property="og:description" content="浮生偷得半晌，笔摘闲话二三。 ——诺伯德  前言使用hexo搭建博客hexo修改修改主题yilia主题配置Bug处理">
+<meta property="og:description" content="浮生偷得半晌，笔摘闲话二三。 ——诺伯德  目录 前言 使用hexo搭建博客 hexo修改修改主题 yilia主题配置 Bug处理">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2019/05/14/myblog_build/hexo_init.png">
 <meta property="og:image" content="http://yoursite.com/2019/05/14/myblog_build/hexo_init_bug.png">
 <meta property="og:image" content="http://yoursite.com/2019/05/14/myblog_build/hexo_g.png">
 <meta property="og:image" content="http://yoursite.com/2019/05/14/myblog_build/myblog.jpg">
 <meta property="og:image" content="http://yoursite.com/2019/05/14/myblog_build/yilia_theme_module_blank.png">
-<meta property="og:updated_time" content="2019-05-15T04:35:01.323Z">
+<meta property="og:updated_time" content="2019-05-18T10:15:46.063Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="个人博客搭建">
-<meta name="twitter:description" content="浮生偷得半晌，笔摘闲话二三。 ——诺伯德  前言使用hexo搭建博客hexo修改修改主题yilia主题配置Bug处理">
+<meta name="twitter:description" content="浮生偷得半晌，笔摘闲话二三。 ——诺伯德  目录 前言 使用hexo搭建博客 hexo修改修改主题 yilia主题配置 Bug处理">
 <meta name="twitter:image" content="http://yoursite.com/2019/05/14/myblog_build/hexo_init.png">
   
   
@@ -91,8 +92,6 @@
 		        
 					<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/lightislost" title="zhihu"><i class="icon-zhihu"></i></a>
 		        
-					<a class="bilibili" target="_blank" href="https://space.bilibili.com/7847525" title="bilibili"><i class="icon-bilibili"></i></a>
-		        
 					<a class="rss" target="_blank" href="/atom.xml" title="rss"><i class="icon-rss"></i></a>
 		        
 			</div>
@@ -133,8 +132,6 @@
 						<a class="github" target="_blank" href="https://github.com/lightislost" title="github"><i class="icon-github"></i></a>
 			        
 						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/lightislost" title="zhihu"><i class="icon-zhihu"></i></a>
-			        
-						<a class="bilibili" target="_blank" href="https://space.bilibili.com/7847525" title="bilibili"><i class="icon-bilibili"></i></a>
 			        
 						<a class="rss" target="_blank" href="/atom.xml" title="rss"><i class="icon-rss"></i></a>
 			        
@@ -185,7 +182,14 @@
         <p>浮生偷得半晌，笔摘闲话二三。<br></p>
 <p align="right">——诺伯德</p>
 
-<p><a href="#前言">前言</a><br><br><a href="#使用hexo搭建博客">使用hexo搭建博客</a><br><br><a href="#hexo修改主题">hexo修改修改主题</a><br><br><a href="#yilia主题配置">yilia主题配置</a><br><br><a href="#Bug处理">Bug处理</a><br><br><a id="more"></a></p>
+<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><ul>
+<li><a href="#前言">前言</a><br></li>
+<li><a href="#使用hexo搭建博客">使用hexo搭建博客</a><br></li>
+<li><a href="#hexo修改主题">hexo修改修改主题</a><br></li>
+<li><a href="#yilia主题配置">yilia主题配置</a><br></li>
+<li><a href="#Bug处理">Bug处理</a><br><a id="more"></a>
+</li>
+</ul>
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言<br></h2><h6 id="在开始一切之前，你必须已经："><a href="#在开始一切之前，你必须已经：" class="headerlink" title="在开始一切之前，你必须已经："></a>在开始一切之前，你必须已经：<br></h6><p>拥有一个github账号，没有的话去注册一个；<br><br>安装了node.js、npm，并了解相关基础知识；<br><br>安装了git for windows（或者其它git客户端）。<br><br></p>
 <h6 id="本文所使用的环境："><a href="#本文所使用的环境：" class="headerlink" title="本文所使用的环境："></a>本文所使用的环境：<br></h6><p>Windows@10<br><br><a href="mailto:node.js@10.15.3" target="_blank" rel="noopener">node.js@10.15.3</a><br><br><a href="mailto:git@2.19.1" target="_blank" rel="noopener">git@2.19.1</a><br><br><a href="mailto:hexo-cli@1.1.1" target="_blank" rel="noopener">hexo-cli@1.1.1</a><br><br><a href="mailto:npm@6.4.1" target="_blank" rel="noopener">npm@6.4.1</a><br><br></p>
 <h6 id="本文参考内容"><a href="#本文参考内容" class="headerlink" title="本文参考内容:"></a>本文参考内容:<br></h6><p>古人言：工于利其事，必先利其器。<br><br>因此本文主要参考了小茗同学的<a href="http://blog.liuxianan.com/build-blog-website-by-hexo-github.html" target="_blank" rel="noopener">博客搭建教程</a>和Litten的<a href="https://github.com/litten/hexo-theme-yilia" target="_blank" rel="noopener">Yilia模板</a>以及AomanHao对<a href="https://blog.csdn.net/Aoman_Hao" target="_blank" rel="noopener">Yilia部分问题</a>的解答。<br><br></p>
@@ -258,6 +262,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">入门教程</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -326,7 +341,7 @@
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          lgb_xgb_paras
+          XGBoost和Lightgbm算法的原理及使用
         
       </div>
     </a>
@@ -452,6 +467,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">算法， 数据挖掘</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">入门</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">入门教程</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
